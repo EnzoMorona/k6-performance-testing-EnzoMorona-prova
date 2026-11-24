@@ -10,12 +10,21 @@ export const RateContentOK = new Rate('content_OK');
 export const options = {
   thresholds: {
     http_req_failed: ['rate<0.30'],
-    get_contacts: ['p(99)<500'],
+    get_contacts: ['p(99)<600'],
     content_OK: ['rate>0.95']
   },
   stages: [
-    { duration: '5s', target: 2 },
-    { duration: '5s', target: 6 }
+    { duration: '15s', target: 7 },
+    { duration: '15s', target: 14 },
+    { duration: '15s', target: 21 },
+    { duration: '15s', target: 28 },
+    { duration: '20s', target: 35 },
+    { duration: '20s', target: 42 },
+    { duration: '20s', target: 50 },
+    { duration: '20s', target: 58 },
+    { duration: '20s', target: 76 },
+    { duration: '20s', target: 84 },
+    { duration: '30s', target: 92 }
   ]
 };
 
@@ -27,7 +36,7 @@ export function handleSummary(data) {
 }
 
 export default function () {
-  const baseUrl = 'https://test.k6.io/';
+  const baseUrl = 'https://api.deadlock-api.com';
 
   const params = {
     headers: {
